@@ -14,6 +14,7 @@ function App() {
   //useEffect
   useEffect(() => {
     filterHandler();
+    saveLocalTodos();
   }, [todos, status]);
   
   //Functions and events
@@ -23,11 +24,20 @@ function App() {
         setFilteredTodos(todos.filter(todo => todo.completed === true));
         break;
       case 'uncompleted':
-        setFilteredTodos(todos.filter(todo => todo.completed === false));
+        setFilteredTodos(todos.filter(todo => todo.completed !== true));
         break;
       default:
         setFilteredTodos(todos);
         break;
+    }
+  };
+
+  //Save locally
+  const saveLocalTodos = () => {
+    if(localStorage.getItem('todos') === null){
+      localStorage.setItem('todos', JSON.stringify([]));
+    } else {
+      localStorage.setItem('todos', JSON.stringify(todos));
     }
   }
 
@@ -42,9 +52,13 @@ function App() {
         setTodos={setTodos} 
         setInputText={setInputText} 
         setStatus={setStatus}
-        filteredTodos={filteredTodos}
         />
-      <ToDoList setTodos={setTodos} todos={todos}/>
+
+      <ToDoList 
+        filteredTodos={filteredTodos} 
+        setTodos={setTodos} 
+        todos={todos}
+      />
     </div>
   );
 }

@@ -3,7 +3,6 @@ import React from "react";
 const Form = ({ setInputText, todos, setTodos, inputText, setStatus }) => {
     //Here I can write JS code and function
     const inputTextHandler = (e) => {
-        console.log(e.target.value); //log the event to understand what is happening in the input field
         setInputText(e.target.value); 
     };
 

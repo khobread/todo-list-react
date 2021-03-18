@@ -1,3 +1,5 @@
+//jshint esversion:6
+
 import React, { useState, useEffect, Components } from 'react';
 import './App.css';
 import Form from './components/Form';
@@ -62,7 +64,7 @@ function App() {
         setTodos={setTodos} 
         setInputText={setInputText} 
         setStatus={setStatus}
-        />
+      />
 
       <ToDoList 
         filteredTodos={filteredTodos} 
